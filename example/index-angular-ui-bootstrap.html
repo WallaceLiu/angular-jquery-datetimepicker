@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Angular Bootstrap - Date Time Picker Demo</title>
+<base href="..">
+
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet"
+	href="vendor/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body ng-app="myApp">
+	<div class="h1">Angular 日期控件</div>
+	<section class="row">
+		<section ng-controller="dateDemo" class="col-md-6"
+			style="float: none; margin: 20px auto; background: #fff; padding: 20px;">
+			<h2 class="">选择日期：{{myDate | date:'fullDate'}}</h2>
+			<h4>內置日期</h4>
+			<datepicker ng-model="myDate" min-date="minDate" show-weeks="false"
+					class="wellwell-sm"></datepicker>
+			<div>说明：ng-model 绑定dt模块 ， min-date 最少日期，show-weeks= ture 显示周</div>
+			<br />
+			<h4>非內置日期</h4>
+			<div class="row">
+				<div class="col-md-6">
+					<label for="">弹出</label>
+					<p class="input-group">
+						<input type="text" class="form-control"
+							datepicker-popup="{{myDefaultDateFormat}}" ng-model="myDate"
+							is-open="opened" min-date="minDate" max-date="'2016-12-30'"
+							datepicker-options="dateOptions"
+							date-disabled="disabled(date,mode)" ng-required="true"
+							close-text="Close"> <span class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="open($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<label for="">日期格式</label> <select name="" id=""
+						class="form-control" ng-model="myDefaultDateFormat"
+						ng-options="f for f in myDateformats"><option value=""></option></select>
+				</div>
+			</div>
+
+			<div class="row"></div>
+			<hr>
+			<div>
+				<button type="button" class="btn btn-info btn-sm" ng-click="today()">今天</button>
+				<button type="button" class="btn btn-sm btn-default"
+					ng-click="myDate='2008-08-08'">设置</button>
+				<button type="button" class="btn btn-sm btn-danger"
+					ng-click="clear()">清除</button>
+				<!-- <button type="button" class="btn btn-sm btn-default"
+					ng-click="toggleMin()" tooltip="After today restriction">限制</button> -->
+			</div>
+		</section>
+	</section>
+
+	<script src="vendor/angular/angular.js"></script>
+	<script
+		src="http://cdn.bootcss.com/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.js"></script>
+	<script src="src/js/mydate.js"></script>
+</body>
+</html>
